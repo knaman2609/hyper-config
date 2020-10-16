@@ -35,10 +35,10 @@ data Value
 instance eqValue :: Eq Value where
   eq (Value t a) (Value t' b)
     | t == t' = case t of
-      RuntimeInt -> runAny unsafeCoerce a == runAny unsafeCoerce b :: Int
-      RuntimeNumber -> runAny unsafeCoerce a == runAny unsafeCoerce b :: Number
+      RuntimeInt -> runAny unsafeCoerce a == (runAny unsafeCoerce b :: Int)
+      RuntimeNumber -> runAny unsafeCoerce a == (runAny unsafeCoerce b :: Number)
       RuntimeRecord _ -> unsafeStringify a == unsafeStringify b -- WARN: not ideal, but how do we check for it anyway
-      RuntimeString -> runAny unsafeCoerce a == runAny unsafeCoerce b :: String
+      RuntimeString -> runAny unsafeCoerce a == (runAny unsafeCoerce b :: String)
       RuntimeReference r ->
         let
           ra = unsafeCoerce a :: Reference Any
@@ -56,9 +56,9 @@ instance showValue :: Show Value where
 
 showTypedAny :: RuntimeType -> Any -> String
 showTypedAny t a = case t of
-  RuntimeInt -> show $ runAny unsafeCoerce a :: Int
-  RuntimeNumber -> show $ runAny unsafeCoerce a :: Number
-  RuntimeString -> show $ runAny unsafeCoerce a :: String
+  RuntimeInt -> show $ (runAny unsafeCoerce a :: Int)
+  RuntimeNumber -> show $ (runAny unsafeCoerce a :: Number)
+  RuntimeString -> runAny unsafeCoerce a :: String
   RuntimeReference r -> case unsafeCoerce a :: Reference Any of
     Reference str -> "(Reference " <> str <> ")"
     Literal la -> showTypedAny r la
@@ -74,7 +74,7 @@ fromValue :: forall a. Reify a => Value -> Maybe a
 fromValue (Value t a) = runAny f a
   where
   f :: forall x. x -> Maybe a
-  f x = unsafeCoerce x <$ unreify t :: Maybe (Proxy a)
+  f x = unsafeCoerce x <$ (unreify t :: Maybe (Proxy a))
 
 unsafeFromValue :: Value -> Any
 unsafeFromValue (Value t a) = a

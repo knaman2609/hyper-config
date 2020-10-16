@@ -2,6 +2,7 @@ module Test.Main where
 
 import Test.Prelude
 import Effect (Effect)
+import Effect.Aff (launchAff_)
 import Test.Data.SubRecord as Data.SubRecord
 import Test.Data.SubRecord.Heterogeneous as Data.SubRecord.Heterogeneous
 import Test.Data.SubRecord.Heterogeneous.Nullable as Data.SubRecord.Heterogeneous.Nullable
@@ -23,11 +24,11 @@ import Test.HyperWidgetConfig.Resolve.ConfigTree.Probe as HyperWidgetConfig.Reso
 import Test.HyperWidgetConfig.Resolve.ConfigTree.ResolveComponents as HyperWidgetConfig.Resolve.ConfigTree.ResolveComponents
 import Test.HyperWidgetConfig.Resolve.ConfigTree.Value as HyperWidgetConfig.Resolve.ConfigTree.Value
 import Test.Spec.Reporter (consoleReporter)
-import Test.Spec.Runner (run)
+import Test.Spec.Runner (runSpec)
 
 main :: Effect Unit
-main = do
-  run [ consoleReporter ] do
+main = launchAff_ $ do
+  runSpec [ consoleReporter ] do
     describe "Data" do
       describe "SubRecord" do
         describe "Heterogeneous" do

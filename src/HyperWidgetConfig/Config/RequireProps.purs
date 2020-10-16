@@ -9,7 +9,7 @@ import Prim.Boolean (False, True, kind Boolean)
 import Prim.Row as Row
 import Prim.RowList (class RowToList, Nil, kind RowList)
 import Prim.RowList as RL
-import Type.Row (class ListToRow)
+import Type.RowList (class ListToRow)
 
 inferRequiredProps' :: forall props required. CompileTimeCheck => RequireProps_ props required => props -> required
 inferRequiredProps' _ = any
