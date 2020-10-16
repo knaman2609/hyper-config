@@ -18,7 +18,7 @@ import Prim.Row as Row
 import Prim.RowList (class RowToList, Nil, kind RowList)
 import Prim.RowList as RL
 import Prim.TypeError (class Fail, Above, Quote, Text)
-import Type.Row (class ListToRow)
+import Type.RowList (class ListToRow)
 import Unsafe.Coerce (unsafeCoerce)
 
 class HFillFromSmallerRecursive env r where

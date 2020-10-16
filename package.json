@@ -6,6 +6,7 @@
     "postinstall": "spago install && spago build --deps-only",
     "build": "spago build",
     "test": "spago test",
+    "watch": "pscid",
     "benchmark": "spago run -m TestBenchmark.Main",
     "benchmark:optimized:bundle-app": "spago bundle-app -m TestBenchmark.Main --to dist/runBenchmark.js",
     "benchmark:optimized:terser": "terser -c -m -o dist/runBenchmark.min.js -- dist/runBenchmark.js",
@@ -16,7 +17,8 @@
     "benchmark": "^2.1.4",
     "editorconfig": "^0.15.3",
     "npm-run-all": "^4.1.5",
-    "purescript": "^0.12.5",
+    "pscid": "^2.9.3",
+    "purescript": "^0.13.8",
     "purty": "^6.2.0",
     "spago": "^0.16.0",
     "terser": "^5.2.1"

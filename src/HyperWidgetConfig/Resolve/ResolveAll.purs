@@ -4,7 +4,7 @@ import Data.SubRecord (SubRecord)
 import Extra.Debug (class CompileTimeCheck, any)
 import HyperWidgetConfig.Reference (Reference)
 import Prim.RowList (class RowToList, Cons, Nil, kind RowList)
-import Type.Row (class ListToRow)
+import Type.RowList (class ListToRow)
 
 inferResolved' :: forall from to. CompileTimeCheck => Resolve_ from to => from -> to
 inferResolved' _ = any

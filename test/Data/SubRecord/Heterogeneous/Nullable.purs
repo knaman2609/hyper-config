@@ -65,7 +65,7 @@ spec = do
       result `shouldEqual` expected
     it "should not recurse for inner subrecord" do
       let
-        input = { inner: notNull $ mkSubRecord { foo: "hello world" } :: SubRecord ( foo :: String ) }
+        input = { inner: notNull $ (mkSubRecord { foo: "hello world" } :: SubRecord ( foo :: String )) }
 
         result = hfromNullable input
 

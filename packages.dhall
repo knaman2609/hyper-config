@@ -106,29 +106,27 @@ in  upstream
 -}
 
 let upstream =
-      https://raw.githubusercontent.com/purescript/package-sets/psc-0.12.5-20190525/src/packages.dhall sha256:d52b72daa09ca9eca2d62744ea051177773cfaec4303cb23b4bc1b156344eed5
+      https://github.com/purescript/package-sets/releases/download/psc-0.13.8-20201007/packages.dhall sha256:35633f6f591b94d216392c9e0500207bb1fec42dd355f4fecdfd186956567b6b
 
 in  upstream
   with benchotron =
-      { dependencies =
-          [ "exceptions"
-          , "profunctor"
-          , "arrays"
-          , "exists"
-          , "lcg"
-          , "now"
-          , "foldable-traversable"
-          , "node-buffer"
-          , "node-fs"
-          , "transformers"
-          , "quickcheck"
-          , "strings"
-          , "identity"
-          , "datetime"
-          , "node-readline"
-          ]
-      , repo =
-          "https://github.com/hdgarrood/purescript-benchotron.git"
-      , version =
-          "v7.0.1"  -- branch, tag, or commit hash
-      }
+    { dependencies =
+      [ "exceptions"
+      , "profunctor"
+      , "arrays"
+      , "exists"
+      , "lcg"
+      , "now"
+      , "foldable-traversable"
+      , "node-buffer"
+      , "node-fs"
+      , "transformers"
+      , "quickcheck"
+      , "strings"
+      , "identity"
+      , "datetime"
+      , "node-readline"
+      ]
+    , repo = "https://github.com/hdgarrood/purescript-benchotron.git"
+    , version = "v7.0.1"
+    }
